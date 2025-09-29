@@ -13,7 +13,7 @@ Capture and analyze network packets using Wireshark. Apply protocol-based filter
 
 ### ARP Traffic
 - **Filter:** `arp`
-- /images/Screenshot 2025-09-29 194505.png
+  !/images/Screenshot 2025-09-29 194505.png
 - **Description:**  
   Displays Address Resolution Protocol packets used for IP-to-MAC address resolution on the local network.  
   Includes ARP requests (broadcast to find MAC for an IP) and ARP replies (direct responses with MAC addresses).  
