@@ -7,6 +7,7 @@ Capture and analyze network packets using Wireshark. Apply protocol-based filter
 - Installed Wireshark on Kali Linux.
 - Started capture on interface `eth0` to collect live network traffic.
 - Generated network activities such as web browsing, DNS queries, and HTTP logins.
+- ![](images/2.png)
 - Stopped capture after sufficient data collection and saved the capture file (`.pcapng`).
 
 ## Protocol Filters and Analysis
@@ -14,7 +15,6 @@ Capture and analyze network packets using Wireshark. Apply protocol-based filter
 ### ARP Traffic
 - **Filter:** `arp`
 ![](images/3.png)
-
 - **Description:**  
   Displays Address Resolution Protocol packets used for IP-to-MAC address resolution on the local network.  
   Includes ARP requests (broadcast to find MAC for an IP) and ARP replies (direct responses with MAC addresses).  
@@ -22,7 +22,8 @@ Capture and analyze network packets using Wireshark. Apply protocol-based filter
 
 ### DNS Traffic
 - **Filters:**
-- 
+- ![](images/6.png)
+- ![](images/7.png)
   - `ip.src == <host_ip>` (e.g., `ip.src == 10.199.92.19`) to view all traffic originating from the host.  
   - `udp.dstport == 53` to isolate DNS query traffic to port 53.  
 - **Description:**  
@@ -31,16 +32,18 @@ Capture and analyze network packets using Wireshark. Apply protocol-based filter
 
 ### HTTP Traffic & Credentials
 - **Filters:**
-- 
+- ![](images/4.png)
   - `tcp.port == 80` to show all HTTP traffic.  
-  - `tcp.stream eq <stream_number>` to follow the full TCP stream for a session (e.g., 76).  
+  - `tcp.stream eq <stream_number>` to follow the full TCP stream for a session (e.g., 76).
+  - to watch the pass and username use this step:
+ ![](images/1.pmg)
 - **Description:**  
   View HTTP GET and POST requests including potential exposure of credentials in plaintext HTTP traffic.  
   The "Follow TCP Stream" tool reconstructs entire session traffic for detailed analysis.
 
 ### TCP Traffic & Security Analysis
 - **Filters:**
-- 
+- ![](images/5.png)
   - `tcp.srcport == 443` to display HTTPS (TLS) traffic.  
   - `tcp.flags.syn == 1 and tcp.flags.ack == 0` for detecting TCP SYN packets, often used to identify SYN flood DoS attempts.  
 - **Description:**  
